@@ -12,8 +12,8 @@ export interface Question {
   resolved: boolean;
   resolvedJustification?: string;
   resolvedDate?: Date;
-  created: Date;
-  updated: Date;
+  created?: Date;
+  updated?: Date;
 }
 
 export enum QuestionCategory {

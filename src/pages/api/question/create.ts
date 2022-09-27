@@ -47,21 +47,22 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
-    if (req.method === "POST") {
-      const { body } = req;
-
-      const isValid = await schema.isValid(body);
-
-      if (!isValid) {
-        return res.status(400).end("Data format invalid");
-      }
-
-      const question = await insertQuestionAtFirestore(body);
-
-      return res.status(200).json(question);
+    if (req.method !== "POST") {
+      res.setHeader("Allow", "POST");
+      return res.status(405).end("Method not allowed");
     }
-    res.setHeader("Allow", "POST");
-    res.status(405).end("Method not allowed");
+
+    const { body } = req;
+
+    const isValid = await schema.isValid(body);
+
+    if (!isValid) {
+      return res.status(400).end("Data format invalid");
+    }
+
+    const question = await insertQuestionAtFirestore(body);
+
+    return res.status(200).json(question);
   } catch (e) {
     res.status(500).end(`Error on server: ${e}`);
   }

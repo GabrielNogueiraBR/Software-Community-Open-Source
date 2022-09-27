@@ -15,10 +15,7 @@ export function Profile({ showProfileData = true }: ProfileProps) {
           </Text>
         </Box>
       )}
-      <Avatar
-        size="md"
-        name="Nome do Usuário"
-      />
+      <Avatar size="md" name="Nome do Usuário" />
     </Flex>
   );
 }

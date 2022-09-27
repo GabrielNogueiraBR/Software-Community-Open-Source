@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "cross-env NEXT_PUBLIC_STAGE=development next dev",
+    "build": "cross-env NEXT_PUBLIC_STAGE=production next build",
+    "start": "cross-env NEXT_PUBLIC_STAGE=production next start",
     "lint": "next lint"
   },
   "engines": {
@@ -16,12 +16,14 @@
     "@chakra-ui/react": "^2.3.2",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "cross-env": "^7.0.3",
     "firebase-admin": "^11.0.1",
     "framer-motion": "^7.3.5",
     "next": "12.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.4.0"
+    "react-icons": "^4.4.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/node": "^18.7.18",
@@ -29,6 +31,7 @@
     "@types/react-dom": "^18.0.6",
     "eslint": "8.23.1",
     "eslint-config-next": "12.3.0",
+    "prettier": "^2.7.1",
     "typescript": "^4.8.3"
   }
 }

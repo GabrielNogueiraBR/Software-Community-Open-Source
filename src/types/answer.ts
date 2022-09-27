@@ -5,6 +5,6 @@ export interface Answer {
   answer: string;
   positiveRatingQty: number;
   negativeRatingQty: number;
-  created: Date;
-  updated: Date;
+  created?: Date;
+  updated?: Date;
 }

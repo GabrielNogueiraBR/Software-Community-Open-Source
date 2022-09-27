@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NEXT_PUBLIC_STAGE=development next dev",
-    "build": "NEXT_PUBLIC_STAGE=production next build",
-    "start": "NEXT_PUBLIC_STAGE=production next start",
+    "dev": "cross-env NEXT_PUBLIC_STAGE=development next dev",
+    "build": "cross-env NEXT_PUBLIC_STAGE=production next build",
+    "start": "cross-env NEXT_PUBLIC_STAGE=production next start",
     "lint": "next lint"
   },
   "engines": {
@@ -16,6 +16,7 @@
     "@chakra-ui/react": "^2.3.2",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "cross-env": "^7.0.3",
     "firebase-admin": "^11.0.1",
     "framer-motion": "^7.3.5",
     "next": "12.3.0",

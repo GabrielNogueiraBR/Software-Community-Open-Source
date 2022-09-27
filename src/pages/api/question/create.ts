@@ -15,6 +15,33 @@ const schema = yup.object().shape({
   complexity: yup.number().min(0).max(5).required(),
 });
 
+const insertQuestionAtFirestore = async (body: any): Promise<Question> => {
+  const { assignee, title, description, category, complexity } = body;
+
+  const collectionName =
+    process.env.NEXT_PUBLIC_STAGE === "production"
+      ? "question"
+      : "question_dev";
+
+  const collectionReference = firestore.collection(collectionName);
+
+  const question: Question = {
+    assignee,
+    title,
+    description,
+    category,
+    complexity,
+    answers: [],
+    resolved: false,
+    created: new Date(),
+    updated: new Date(),
+  };
+
+  await collectionReference.add(question);
+
+  return question;
+};
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -23,32 +50,13 @@ export default async function handler(
     if (req.method === "POST") {
       const { body } = req;
 
-      if (!(await schema.isValid(body))) {
-        return res.status(404).end("Data format invalid");
+      const isValid = await schema.isValid(body);
+
+      if (!isValid) {
+        return res.status(400).end("Data format invalid");
       }
 
-      const { assignee, title, description, category, complexity } = body;
-
-      const collectionName =
-        process.env.NEXT_PUBLIC_STAGE === "production"
-          ? "question"
-          : "question_dev";
-
-      const collectionReference = firestore.collection(collectionName);
-
-      const question: Question = {
-        assignee,
-        title,
-        description,
-        category,
-        complexity,
-        answers: [],
-        resolved: false,
-        created: new Date(),
-        updated: new Date(),
-      };
-
-      await collectionReference.add(question);
+      const question = await insertQuestionAtFirestore(body);
 
       return res.status(200).json(question);
     }

@@ -17,8 +17,8 @@ export interface Question {
 }
 
 export enum QuestionCategory {
-  TYPESCRIPT="typescript",
-  JAVASCRIPT="javascript",
-  NEXTJS="next.js",
-  DOCKER="docker",
+  TYPESCRIPT = "typescript",
+  JAVASCRIPT = "javascript",
+  NEXTJS = "next.js",
+  DOCKER = "docker",
 }

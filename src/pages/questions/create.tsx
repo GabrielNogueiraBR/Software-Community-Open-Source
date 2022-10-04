@@ -25,6 +25,7 @@ import {
 } from "../../types/question";
 import api from "../../services/api";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 const formCreateSchema = yup.object().shape({
   title: yup.string().required(),
@@ -63,85 +64,98 @@ export default function CreateUser() {
   });
 
   return (
-    <Box>
-      <Header />
-      <Flex w="100%" my="6" maxWidth={1480} mx="auto" px="6">
-        <Box
-          as="form"
-          flex="1"
-          borderRadius={8}
-          bg="gray.800"
-          p={["6", "8"]}
-          onSubmit={(e: FormEvent<HTMLElement>) =>
-            formik.handleSubmit(e as FormEvent<HTMLFormElement>)
-          }
-        >
-          <Heading size="lg" fontWeight={"normal"}>
-            Criar Dúvida
-          </Heading>
-          <Divider my="6" borderColor={"gray.700"} />
-          <VStack spacing={"8"}>
-            <HStack w="100%" spacing={["6", "8"]}>
+    <>
+      <Head>
+        <title>Question create</title>
+      </Head>
+      <Box>
+        <Header />
+        <Flex w="100%" my="6" maxWidth={1480} mx="auto" px="6">
+          <Box
+            as="form"
+            flex="1"
+            borderRadius={8}
+            bg="gray.800"
+            p={["6", "8"]}
+            onSubmit={(e: FormEvent<HTMLElement>) =>
+              formik.handleSubmit(e as FormEvent<HTMLFormElement>)
+            }
+          >
+            <Heading size="lg" fontWeight={"normal"}>
+              Criar Dúvida
+            </Heading>
+            <Divider my="6" borderColor={"gray.700"} />
+            <VStack spacing={"8"}>
+              <HStack w="100%" spacing={["6", "8"]}>
+                <SimpleGrid
+                  minChildWidth={"240px"}
+                  spacing={["6", "8"]}
+                  w="100%"
+                >
+                  <Input
+                    name="title"
+                    label="Título"
+                    error={formik.errors.title}
+                    flex="2"
+                    onChange={formik.handleChange}
+                    value={formik.values.title}
+                  />
+                </SimpleGrid>
+                <SimpleGrid
+                  minChildWidth={"240px"}
+                  spacing={["6", "8"]}
+                  w="100%"
+                >
+                  <Select
+                    name="category"
+                    label="Categoria"
+                    options={["Typescript", "Javascript", "Next.Js", "Docker"]}
+                    error={formik.errors.category}
+                    onChange={formik.handleChange}
+                    value={formik.values.category}
+                    flex="1"
+                  />
+                  <NumberInput
+                    name="complexity"
+                    label="Complexidade"
+                    min={0}
+                    max={5}
+                    defaultValue={0}
+                    error={formik.errors.complexity}
+                    onChange={(valueString, valueNumber) =>
+                      formik.setFieldValue("complexity", valueNumber)
+                    }
+                    value={formik.values.complexity}
+                    flex="1"
+                  />
+                </SimpleGrid>
+              </HStack>
               <SimpleGrid minChildWidth={"240px"} spacing={["6", "8"]} w="100%">
-                <Input
-                  name="title"
-                  label="Título"
-                  error={formik.errors.title}
-                  flex="2"
+                <TextArea
+                  name="description"
+                  label="Descrição"
+                  error={formik.errors.description}
                   onChange={formik.handleChange}
-                  value={formik.values.title}
+                  value={formik.values.description}
                 />
               </SimpleGrid>
-              <SimpleGrid minChildWidth={"240px"} spacing={["6", "8"]} w="100%">
-                <Select
-                  name="category"
-                  label="Categoria"
-                  options={["Typescript", "Javascript", "Next.Js", "Docker"]}
-                  error={formik.errors.category}
-                  onChange={formik.handleChange}
-                  value={formik.values.category}
-                  flex="1"
-                />
-                <NumberInput
-                  name="complexity"
-                  label="Complexidade"
-                  min={0}
-                  max={5}
-                  defaultValue={0}
-                  error={formik.errors.complexity}
-                  onChange={(valueString, valueNumber) =>
-                    formik.setFieldValue("complexity", valueNumber)
-                  }
-                  value={formik.values.complexity}
-                  flex="1"
-                />
-              </SimpleGrid>
-            </HStack>
-            <SimpleGrid minChildWidth={"240px"} spacing={["6", "8"]} w="100%">
-              <TextArea
-                name="description"
-                label="Descrição"
-                error={formik.errors.description}
-                onChange={formik.handleChange}
-                value={formik.values.description}
-              />
-            </SimpleGrid>
-          </VStack>
+            </VStack>
 
-          <Flex mt="8" justify={"flex-end"}>
-            <HStack spacing={"4"}>
-              <Link href="/questions" passHref>
-                <Button as="a" colorScheme={"whiteAlpha"} px="12" py="2.5">
-                  Cancelar
+            <Flex mt="8" justify={"flex-end"}>
+              <HStack spacing={"4"}>
+                <Link href="/questions" passHref>
+                  <Button as="a" colorScheme={"whiteAlpha"} px="12" py="2.5">
+                    Cancelar
+                  </Button>
+                </Link>
+                <Button type="submit" colorScheme={"pink"} px="12" py="2.5">
+                  Salvar
                 </Button>
-              </Link>
-              <Button type="submit" colorScheme={"pink"} px="12" py="2.5">
-                Salvar
-              </Button>
-            </HStack>
-          </Flex>
-        </Box>
-      </Flex>
-    </Box>
+              </HStack>
+            </Flex>
+          </Box>
+        </Flex>
+      </Box>
+    </>
   );
 }

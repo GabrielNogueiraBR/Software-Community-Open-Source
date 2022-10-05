@@ -1,6 +1,14 @@
 import { Answer } from "./answer";
 import { User } from "./user";
 
+export interface QuestionPayload {
+  assignee: User;
+  title: string;
+  description: string;
+  category: string;
+  complexity: number;
+}
+
 export interface Question {
   assignee: User;
   title: string;

@@ -1,6 +1,7 @@
 import { Box, Button, Checkbox, Flex, Heading, Icon, Table, Tbody, Td, Th, Thead, Tr, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import Header from "../../components/Header";
+import { RiAddLine, RiPencilLine } from "react-icons/ri";
 
 export default function QuestionList() {
    return (
@@ -19,6 +20,7 @@ export default function QuestionList() {
                      size="sm"
                      fontSize="small"
                      colorScheme="pink"
+                     leftIcon={<Icon as={RiAddLine} fontSize="20" />}
                   >
                      Nova Dúvida
                   </Button>
@@ -49,6 +51,7 @@ export default function QuestionList() {
                               size="sm"
                               fontSize="small"
                               colorScheme="purple"
+                              leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
                            >
                               Editar Dúvida
                            </Button>

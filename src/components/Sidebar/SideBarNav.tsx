@@ -18,7 +18,7 @@ export function SideBarNav() {
         <NavLink icon={RiSearchLine} href="x">Encontrar dúvidas</NavLink>
       </NavSection>
       <NavSection title="PERFIL">
-        <NavLink icon={RiListCheck} href="/users/question">Minhas dúvidas</NavLink>
+        <NavLink icon={RiListCheck} href="/user/questions">Minhas dúvidas</NavLink>
         <NavLink icon={RiUserLine} href="x">Meu Perfil</NavLink>
       </NavSection>
       <NavSection title="CATEGORIAS">

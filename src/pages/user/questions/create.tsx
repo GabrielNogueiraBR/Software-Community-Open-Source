@@ -11,21 +11,22 @@ import {
 import { useFormik } from "formik";
 import Link from "next/link";
 import { FormEvent } from "react";
-import { Input } from "../../components/Form/Input";
-import { NumberInput } from "../../components/Form/NumberInput";
-import { Select } from "../../components/Form/Select";
-import { TextArea } from "../../components/Form/TextArea";
-import Header from "../../components/Header";
+import { Input } from "../../../components/Form/Input";
+import { NumberInput } from "../../../components/Form/NumberInput";
+import { Select } from "../../../components/Form/Select";
+import { TextArea } from "../../../components/Form/TextArea";
+import Header from "../../../components/Header";
 
 import * as yup from "yup";
 import {
   Question,
   QuestionCategory,
   QuestionPayload,
-} from "../../types/question";
-import api from "../../services/api";
+} from "../../../types/question";
+import api from "../../../services/api";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import Sidebar from "../../../components/Sidebar";
 
 const formCreateSchema = yup.object().shape({
   title: yup.string().required(),
@@ -71,6 +72,7 @@ export default function CreateUser() {
       <Box>
         <Header />
         <Flex w="100%" my="6" maxWidth={1480} mx="auto" px="6">
+          <Sidebar />
           <Box
             as="form"
             flex="1"
@@ -143,7 +145,7 @@ export default function CreateUser() {
 
             <Flex mt="8" justify={"flex-end"}>
               <HStack spacing={"4"}>
-                <Link href="/questions" passHref>
+                <Link href="/user/questions" passHref>
                   <Button as="a" colorScheme={"whiteAlpha"} px="12" py="2.5">
                     Cancelar
                   </Button>

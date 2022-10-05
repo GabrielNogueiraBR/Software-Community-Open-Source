@@ -1,5 +1,5 @@
 import admin from "firebase-admin";
-import firebase from ".";
+import firebase from "./index";
 
 const firestore = admin.firestore(firebase);
 

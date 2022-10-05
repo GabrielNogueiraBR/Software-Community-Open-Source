@@ -59,7 +59,7 @@ export default function CreateUser() {
 
       await api
         .post("/question/create", { ...question })
-        .then(() => router.push("/questions"))
+        .then(() => router.push("/user/questions"))
         .catch((e) => console.error(e));
     },
   });

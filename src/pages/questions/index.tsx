@@ -1,4 +1,5 @@
-import { Box, Button, Checkbox, Flex, Heading, Icon, Link, Table, Tbody, Td, Th, Thead, Tr, Text } from "@chakra-ui/react";
+import { Box, Button, Checkbox, Flex, Heading, Icon, Table, Tbody, Td, Th, Thead, Tr, Text } from "@chakra-ui/react";
+import Link from "next/link";
 import Header from "../../components/Header";
 
 export default function QuestionList() {
@@ -12,7 +13,7 @@ export default function QuestionList() {
                      Minhas Dúvidas
                   </Heading>
 
-                  <Link href="/user/question/create">
+                  <Link href="/questions/create">
                   <Button
                      as="a"
                      size="sm"

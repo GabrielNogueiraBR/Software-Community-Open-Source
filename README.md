@@ -109,13 +109,13 @@ A estrutura de pastas do nosso projeto está organizado da seguinte forma:
 └── README.md
 
 ```
-- `pages` - Contém as páginas da aplicação, cada página criada deve ser criada na raíz dessa pasta;
+- `pages` - Contém as páginas da aplicação, cada página criada deve ser criada na raiz dessa pasta;
 - `services` - Contém os serviços da aplicação;
 - `styles` - Contém os estilos globais da aplicação;
 - `components` - Contém os componentes reutilizáveis que podem ser utilizados em qualquer página;
 - `contexts` - Contém os contextos, no caso do projeto de exemplo, conterá o Contexto de Menu lateral;
 - `types` - Contém os tipos customizados, utilizando Typescript;
-- `api` - Contém os arquivos que serão interpretados pelo NextJS para criação de enpoints na API;
+- `api` - Contém os arquivos que serão interpretados pelo NextJS para criação de enpoints na API.t
 
 ## 📦 Implantação
 Adicione notas adicionais sobre como implantar isso em um sistema ativo (VITOR)
@@ -138,16 +138,36 @@ Adicione notas adicionais sobre como implantar isso em um sistema ativo (VITOR)
 
 Ao contribuir com este projeto, certifique-se de seguir os códigos de conduta e padrões de codificação.
 
-### ⌨️ Como contribuir
+### 👥 Código de conduta
+Os responsáveis pelo **SCOS** se comprometem a fazer de tudo para manter um ambiente acolhedor e inclusivo para todos, incentivando a criatividade e inovação.
 
-### ⌨️ Como subir modificações
+Não toleraremos comportamentos que violem esses princípios na aplicação, no código fonte, nas issues, nas respostas, nas mensagens, nos comentários, nas marcações e nas solicitações de pull request.
 
-### ⌨️ Padrões de codificação
+Os exemplos de comportamentos que contribuem para criar um ambiente positivo incluem:
 
-### ⌨️ Como revisar um código
+* Usar linguagem inclusiva e amigável
+* Respeitar pontos de vista e experiências diferentes
+* Aceitar e fazer críticas construtivas
+* Focar no que é melhor para a comunidade
+* Mostrar empatia com outros membros da comunidade
+
+Os exemplos de comportamentos inaceitáveis pelos participantes incluem:
+
+* Comentários ofensivos e ataques pessoais
+* Discussões nos diversos fóruns do repositório
+* Qualquer outra forma de conduta que pode ser razoavelmente considerada inapropriada num ambiente profissional
+
+### ⌨️ Como contribuir (VITOR)
+
+### ⌨️ Como subir modificações (VITOR)
+
+### ⌨️ Padrões de codificação/Políticas de código (VITOR)
+
+### ⌨️ Como revisar um código  (VITOR)
 
 
-### ⌨️ Quando mergear uma nova funcionalidade/Como mergear
+### ⌨️ Quando mergear uma nova funcionalidade/Como mergear  (VITOR)
+
 
 ## 📌 Ferramentas de conexão
 
@@ -159,15 +179,15 @@ Ao contribuir com este projeto, certifique-se de seguir os códigos de conduta e
 
 ## ✒️ Autores  
 
--  **Gabriel Nogueira** - _Trabalho Inicial_ - [umdesenvolvedor](https://github.com/linkParaPerfil)
+-  **Gabriel Nogueira** - _Programador Líder_ - [GabrielNogueiraBR](https://github.com/GabrielNogueiraBR)
 
--  **Gabriel Ferraz** - _Documentação_ - [fulanodetal](https://github.com/linkParaPerfil)
+-  **Gabriel Ferraz** - _Programador_ - [gaabrielferraz](https://github.com/gaabrielferraz)
 
--  **Otavio Cordeiro** - _Documentação_ - [fulanodetal](https://github.com/linkParaPerfil)
+-  **Otavio Cordeiro** - _Programador_ - [CordeiroOtavio](https://github.com/CordeiroOtavio)
 
--  **Vitor Gois** - _Documentação_ - [fulanodetal](https://github.com/linkParaPerfil)
+-  **Vitor Gois** - _Programador_ - [VitorGois](https://github.com/VitorGois)
 
- - **Raul Deaque** - _Documentação_ - [fulanodetal](https://github.com/linkParaPerfil)
+ - **Raul Deaque** - _Designer e Programador_ - [ryanraul](https://github.com/ryanraul)
   
 
 
@@ -177,25 +197,7 @@ Este projeto esta sobe a licença MIT. Veja a [LICENÇA](https://opensource.org/
 
 Feito com ❤️ por :
 - Gabriel Nogueira 👋🏽 [Entre em contato!](https://www.linkedin.com/in/gabrielnogueira7/)
-- Gabriel Ferraz 👋🏽 [Entre em contato!](https://www.linkedin.com/in/gabrielnogueira7/)
-- Otavio Cordeiro 👋🏽 [Entre em contato!](https://www.linkedin.com/in/gabrielnogueira7/)
-- Vitor Gois 👋🏽 [Entre em contato!](https://www.linkedin.com/in/gabrielnogueira7/)
-- Raul Deaque 👋🏽 [Entre em contato!](https://www.linkedin.com/in/gabrielnogueira7/)
-
-  
-
-## 🎁 Expressões de gratidão
-
-  
-
-- Conte a outras pessoas sobre este projeto 📢;
-
-- Convide alguém da equipe para uma cerveja 🍺;
-
-- Um agradecimento publicamente 🫂;
-
-- etc.
-
-  
-
----
+- Gabriel Ferraz 👋🏽 [Entre em contato!](https://www.linkedin.com/in/gaabrielferraz/)
+- Otavio Cordeiro 👋🏽 [Entre em contato!](https://www.linkedin.com/in/otavio-cordeiro-de-freitas/)
+- Vitor Gois 👋🏽 [Entre em contato!](https://www.linkedin.com/in/vitorgois/)
+- Raul Deaque 👋🏽 [Entre em contato!](https://www.linkedin.com/in/ryanraul/)

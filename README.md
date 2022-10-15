@@ -191,13 +191,13 @@ Os exemplos de comportamentos inaceitáveis pelos participantes incluem:
 
 ## ✒️ Autores  
 
--  **Gabriel Nogueira** - _Programador Líder_ - [GabrielNogueiraBR](https://github.com/GabrielNogueiraBR)
+-  **Gabriel Nogueira** - _Programador Líder_ - [gabrielnogueirabr](https://github.com/GabrielNogueiraBR)
 
 -  **Gabriel Ferraz** - _Programador_ - [gaabrielferraz](https://github.com/gaabrielferraz)
 
--  **Otavio Cordeiro** - _Programador_ - [CordeiroOtavio](https://github.com/CordeiroOtavio)
+-  **Otavio Cordeiro** - _Programador_ - [cordeirootavio](https://github.com/CordeiroOtavio)
 
--  **Vitor Gois** - _Programador_ - [VitorGois](https://github.com/VitorGois)
+-  **Vitor Gois** - _Programador_ - [vitorgois](https://github.com/VitorGois)
 
  - **Raul Deaque** - _Designer e Programador_ - [ryanraul](https://github.com/ryanraul)
   

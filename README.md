@@ -130,8 +130,21 @@ A estrutura de pastas do nosso projeto está organizado da seguinte forma:
 - `api` - Contém os arquivos que serão interpretados pelo NextJS para criação de enpoints na API.t
 
 ## 📦 Implantação
-Adicione notas adicionais sobre como implantar isso em um sistema ativo (VITOR)
 
+A implantação da aplicação foi feita através da plataforma Vercel, sendo a versão de produção acessada através do link:
+
+https://software-community-open-source.vercel.app/
+
+### 🚀Vercel
+A Vercel é uma plataforma de hospedagem e implantação de aplicações Node.js, React, Vue.js, Next.js, Nuxt.js e static sites. A sua utilização é simples, permitindo facilmente integrar repositórios do GitHub à plataforma e construir mecanismos de deploy automático a partir de eventos.
+
+###  🔨CI/CD
+A partir da integração com a plataforma da Vercel, tornou-se possível a construção de workflows através do GitHub Actions, que possibilitam uma integração e entrega contínua (CI/CD) de forma simples, a partir de eventos do ciclo de desenvolvimento, como o push para um branch ou mesmo a aprovação de um PR que gera um incremento na branch principal do repositório.
+
+1. **Deploy em produção:** O deploy em produção é disparado sempre que existir um `push` na branch principal do projeto (`main`). Dessa forma, sempre que uma nova funcionalidade for adicionada ao projeto e passar pelo ciclo padrão de desenvolvimento, ou seja, codificação, revisão e aprovação, no momento em que essa nova funcionalidade for incrementada na branch principal através de uma `pull request`, automaticamente será disparado esse workflow responsável pelo deploy em produção.
+2. **Deploy em preview:** O deploy em preview é disparado sempre que existir um `push` para qualquer branch do projeto que não seja a branch principal (`main`). O ambiente de preview é utilizado como nosso ambiente de desenvolvimento em nuvem, sendo gerado um build diferente a cada push realizado. 
+
+	Ao contrário do deploy em produção, que permite uma única instância em nuvem, o deploy de preview trabalha com múltiplas instâncias em nuvem, a partir de uma HASH (criptografia) que é criada no momento do deploy. Essa HASH permite que diversas versões do código continuem acessíveis (na internet) através da plataforma da Vercel, sendo esse um ambiente perfeito para testes e desenvolvimentos.
   
 
 ## 🛠️ Construído com
@@ -143,6 +156,7 @@ Adicione notas adicionais sobre como implantar isso em um sistema ativo (VITOR)
 * [Typescript](https://www.typescriptlang.org/docs/home.html) - Linguagem de tipagem JavaScript
 * [Prettier](https://prettier.io/docs/en/index.html) - Biblioteca JavaScript para formatar código
 * [Eslint](https://eslint.org/docs/user-guide/getting-started) - Biblioteca JavaScript para identificar e corrigir problemas de código
+* [Vercel](https://vercel.com/) - Deploy da aplicação
 * [Firebse](https://firebase.google.com) - Plataforma Google para desenvolvimento
 * [Firebase Cloud Firestore](https://firebase.google.com/products/firestore) - Plataforma Google para armazenamento de dados
 

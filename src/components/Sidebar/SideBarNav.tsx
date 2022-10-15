@@ -14,7 +14,7 @@ export function SideBarNav() {
   return (
     <Stack spacing="12" align="flex-start">
       <NavSection title="GERAL">
-        <NavLink icon={RiBarChart2Fill} href="x">Principais dúvidas</NavLink>
+        <NavLink icon={RiBarChart2Fill} href="/">Principais dúvidas</NavLink>
         <NavLink icon={RiSearchLine} href="x">Encontrar dúvidas</NavLink>
       </NavSection>
       <NavSection title="PERFIL">

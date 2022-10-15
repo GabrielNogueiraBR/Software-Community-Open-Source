@@ -16,25 +16,33 @@ Para obter uma cópia do projeto e testar em sua máquina local para desenvolvim
 ### 📋 Pré-requisitos
 Para rodar o projeto você precisa ter o Node.js e o Yarn ou o NPM instalados em sua máquina.
 
-#### Node.js
+ 1. #### Node.js
+    
 
-Node.js é um ambiente de execução JavaScript para servidor que permite executar códigos JavaScript através de um interpretador embutido no Node.js (JavaScript V8).
+> Node.js é um ambiente de execução JavaScript para servidor que permite executar códigos JavaScript através de um interpretador embutido no Node.js (JavaScript V8). 
+> 
+> Você pode baixar o Node.js (versão maior ou igual a 16) no seguinte link:
+> 
+> [https://nodejs.org/en/](https://nodejs.org/en/)
 
-Você pode baixar o Node.js (versão maior ou igual a 16) no seguinte link:
+ 2. #### Yarn ou NPM
+    
+    
+    
 
-[https://nodejs.org/en/](https://nodejs.org/en/)
+> O NPM é o gerenciador de pacotes do Node.js, ou seja, é o
+>     gerenciador de dependências que permite organizar todas as
+>     dependências de seu projeto que utiliza o Node.js. Uma alternativa
+>     para o NPM é o YARN, ambos possuem as mesmas finalidades.
+>     
+> Você pode baixar o yarn ou optar pelo npm que já vem incluso no node.js no link acima.
+>     
+> Caso queira baixar e instalar apenas o yarn, você pode fazê-lo no seguinte link:
+>     
+> [https://yarnpkg.com/en/docs/install](https://yarnpkg.com/en/docs/install)
 
-#### Yarn ou NPM
-
-
-O NPM é o gerenciador de pacotes do Node.js, ou seja, é o gerenciador de dependências que permite organizar todas as dependências de seu projeto que utiliza o Node.js. Uma alternativa para o NPM é o YARN, ambos possuem as mesmas finalidades.
-
-Você pode baixar o yarn ou optar pelo npm que já vem incluso no node.js no link acima.
-
-Caso queira baixar e instalar apenas o yarn, você pode fazê-lo no seguinte link:
-
-[https://yarnpkg.com/en/docs/install](https://yarnpkg.com/en/docs/install)
-   
+ 
+  
 
 ### 🔧 Instalação do Projeto
 
@@ -53,6 +61,8 @@ git clone https://github.com/GabrielNogueiraBR/Software-Community-Open-Source.gi
 Caso você não possua o git instalado em sua máquina, basta baixar o ZIP do projeto e descompactá-lo no local desejado em sua máquina, através do link:
 
 [Download do .ZIP](https://codeload.github.com/GabrielNogueiraBR/Software-Community-Open-Source/zip/refs/heads/main)
+
+### 🔩 Instalação das dependências
 
 Em seguida, você deve acessar a pasta do projeto através de seu terminal para instalação das dependências do projeto, utilizando o yarn ou npm. Para a instalação dos pacotes basta digitar o seguinte comando:
 
@@ -138,7 +148,7 @@ Adicione notas adicionais sobre como implantar isso em um sistema ativo (VITOR)
 
 Ao contribuir com este projeto, certifique-se de seguir os códigos de conduta e padrões de codificação.
 
-### 👥 Código de conduta
+### Código de conduta
 Os responsáveis pelo **SCOS** se comprometem a fazer de tudo para manter um ambiente acolhedor e inclusivo para todos, incentivando a criatividade e inovação.
 
 Não toleraremos comportamentos que violem esses princípios na aplicação, no código fonte, nas issues, nas respostas, nas mensagens, nos comentários, nas marcações e nas solicitações de pull request.
@@ -172,7 +182,7 @@ Os exemplos de comportamentos inaceitáveis pelos participantes incluem:
 ## 📌 Ferramentas de conexão
 
 * [Git](https://git-scm.com/doc) - Sistema de controle de versão
-* [GitHub](https://github.com/GabrielNogueiraBR/Software-Community-Open-Source) - Repositório de código
+* [GitHub](https://github.com/GabrielNogueiraBR/Software-Community-Open-Source) - Repositório remoto de código
 * [Vercel App](https://software-community-open-source.vercel.app/) - Hospedagem de site
 
   

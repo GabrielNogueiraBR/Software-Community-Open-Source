@@ -64,7 +64,9 @@ Caso você não possua o git instalado em sua máquina, basta baixar o ZIP do pr
 
 ### 🔩 Instalação das dependências
 
-Em seguida, você deve acessar a pasta do projeto através de seu terminal para instalação das dependências do projeto, utilizando o yarn ou npm. Para a instalação dos pacotes basta digitar o seguinte comando:
+Em seguida, você deve acessar a pasta do projeto através de seu terminal para instalação das dependências do projeto, utilizando o yarn ou npm. 
+
+Para a instalação dos pacotes basta digitar o seguinte comando:
 
 ##### YARN
 ```bash

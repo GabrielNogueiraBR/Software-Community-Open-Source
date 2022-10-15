@@ -127,7 +127,7 @@ A estrutura de pastas do nosso projeto está organizado da seguinte forma:
 - `components` - Contém os componentes reutilizáveis que podem ser utilizados em qualquer página;
 - `contexts` - Contém os contextos, no caso do projeto de exemplo, conterá o Contexto de Menu lateral;
 - `types` - Contém os tipos customizados, utilizando Typescript;
-- `api` - Contém os arquivos que serão interpretados pelo NextJS para criação de enpoints na API.t
+- `api` - Contém os arquivos que serão interpretados pelo NextJS para criação de enpoints na API.
 
 ## 📦 Implantação
 

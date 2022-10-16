@@ -66,6 +66,7 @@ export default function QuestionList() {
                 </Td>
                 <Td>19 de Setembro, 2022</Td>
                 <Td width="8">
+                <Link href="/user/questions/editor">
                   <Button
                     as="a"
                     size="sm"
@@ -75,6 +76,7 @@ export default function QuestionList() {
                   >
                     Editar Dúvida
                   </Button>
+                  </Link>
                 </Td>
               </Tr>
             </Tbody>

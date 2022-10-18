@@ -10,7 +10,7 @@ export interface QuestionPayload {
 }
 
 export interface Question {
-  id: string;
+  id?: string;
   assignee: User;
   title: string;
   description: string;

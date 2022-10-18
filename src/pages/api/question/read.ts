@@ -10,39 +10,53 @@ const schema = yup.object().shape({
   resolved: yup.boolean(),
 });
 
-const findQuestionAtFirestore = async (body: any): Promise<any> => {
-  const { title, category, complexity, resolved } = body;
+type Filters = {
+  title: string;
+  category: string;
+  complexity: number;
+  resolved: boolean;
+}
 
+const filterQuestions = (questions: Question[], filters: Filters): Question[] => {
+  const { category, complexity, resolved, title } = filters;
+
+  return questions.filter((question) =>{
+    let filterCategory = true;
+    let filterComplexity = true;
+    let filterResolved = true;
+    let filterTitle = true;
+
+    if (category) filterCategory = question.category === category;
+    if (complexity) filterComplexity = question.complexity === complexity;
+    if (resolved) filterResolved = question.resolved === resolved;
+    if (title) filterTitle = question.title.toLowerCase().includes(title.toLowerCase());
+
+    return filterCategory && filterComplexity && filterResolved && filterTitle;
+  });
+}
+
+const findQuestionsAtFirestore = async (): Promise<Question[]> => {
   const collectionName =
     process.env.NEXT_PUBLIC_STAGE === "production"
       ? "question"
       : "question_dev";
 
-  // const whereConditions: string[] = [];
-  // let whereConditionString = '';
-
-  // if(title) whereConditions.push(`'title', '==', title`)
-  // if(category) whereConditions.push(`'category', '==', category`)
-  // if(complexity) whereConditions.push(`'complexity', '==', complexity`)
-  // if(resolved) whereConditions.push(`'resolved', '==', resolved`)
-
-  // for (let i = 0; i < whereConditions.length; i++) {
-  //   whereConditionString += `.where(${whereConditions[i]})`;
-  // }
-
-  // console.log(whereConditionString)
-
-  // const docs = await collectionRef;
-
-  let collectionRef = firestore.collection(collectionName);
-
-  if(title) collectionRef.where('title', '==', title)
-  if(category) collectionRef.where('category', '==', category)
-  if(complexity) collectionRef.where('complexity', '==', complexity)
-  if(resolved) collectionRef.where('resolved', '==', resolved)
-
+  const collectionRef = firestore.collection(collectionName);
   const query = await collectionRef
-    .select('title', 'description', 'complexity', 'data', 'category')
+    .select(
+      'assignee',
+      'title', 
+      'description', 
+      'category', 
+      'complexity', 
+      'answers', 
+      'resolved', 
+      'resolvedJustification',
+      'resolvedDate', 
+      'created', 
+      'updated', 
+      'data'
+    )
     .get()
     .then((res) => res.docs);
 
@@ -52,16 +66,15 @@ const findQuestionAtFirestore = async (body: any): Promise<any> => {
     
     const id = ref['_path']['segments'][1]; 
 
-    const obj = {
-      id,
-    };
+    const obj = {} as Question;
+    obj['id'] = id;
 
     for (const [field, value] of Object.entries(fields)) {
       obj[field] = value['integerValue'] ?? value['stringValue'];
     }
 
     return obj;
-  })
+  });
 };
 
 export default async function handler(
@@ -82,9 +95,14 @@ export default async function handler(
       return res.status(400).end("Data format invalid");
     }
 
-    const question = await findQuestionAtFirestore(query);
+    const { category, complexity, resolved, title } = query as any as Filters;
+    const questions = await findQuestionsAtFirestore();
+    const filteredQuestions = filterQuestions(
+      questions,
+      { category, complexity, resolved, title }
+    );
 
-    return res.status(200).json(question);
+    return res.status(200).json(filteredQuestions);
   } catch (e) {
     res.status(500).end(`Error on server: ${e}`);
   }

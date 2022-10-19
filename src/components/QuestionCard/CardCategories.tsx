@@ -2,10 +2,10 @@ import { Badge, HStack } from "@chakra-ui/react";
 import React from "react";
 
 interface CardCategoriesProps {
-  categories: string[];
+  category: string;
 }
 
-export default function CardCategories({ categories }: CardCategoriesProps) {
+export default function CardCategories({ category }: CardCategoriesProps) {
   return (
     <HStack
       justifyContent="flex-start"
@@ -16,16 +16,13 @@ export default function CardCategories({ categories }: CardCategoriesProps) {
         "&": { "user-select": "none" },
       }}
     >
-      {categories.map((category, index) => (
-        <Badge
-          key={index}
+      <Badge
           background="gray.400"
           color="gray.800"
           borderRadius="4px"
         >
           {category}
         </Badge>
-      ))}
     </HStack>
   );
 }

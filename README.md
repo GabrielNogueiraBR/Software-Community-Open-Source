@@ -183,16 +183,33 @@ Os exemplos de comportamentos inaceitáveis pelos participantes incluem:
 * Discussões nos diversos fóruns do repositório
 * Qualquer outra forma de conduta que pode ser razoavelmente considerada inapropriada num ambiente profissional
 
-### ⌨️ Como contribuir (VITOR)
+### ⌨️ Como contribuir
+Para realizar contribuições para o projeto, deverá a configuração do projeto em seu ambiente de desenvolvimento, como foi descrito na seção *Começando*.
+A partir deste ponto você poderá realizar a criação de _features_ e correção de _bugs_ seguindo os padrãos impostos para este projeto, através do que está descrito neste README.md.
 
-### ⌨️ Como subir modificações (VITOR)
+### ⌨️ Como subir modificações
+Como parte das boas práticas, deverá ser utilizado mensagens de _commits_ que sejam relevantes, ter _commits_ bem descritivos, isto torna o _commit_ melhor de ser entendido além de facilitar a revisão do código, ajuda a entender o que foi resolvido e porque foi resolvido daquela maneira. Isso também pode ajudar em momentos que for necessário realizar _rollbacks_. Vale ressaltar que os _commits_ devem contar uma história do que foi realizado.
+Procure sempre manter as mensagens de _commits_ seguindo o padrão [conventionalcommits](https://www.conventionalcommits.org/pt-br/v1.0.0-beta.4/).
+Após realizado todo o desenvolvimento local, testado e sem anomalias que afetem o código já existente, estará apto a subir para o repositório remoto e abrir uma PR para que os outros desenvolvedores possam realizar o _review_.
+Evite subir grandes modificações, pois isso pode afetar negativamente o review lá na frente, se tornando massante e mais suscetível a erros. 
 
-### ⌨️ Padrões de codificação/Políticas de código (VITOR)
+### ⌨️ Padrões de codificação/Políticas de código
+O contribuidor deve seguir os padrões de desenvolvimento impostos pelos criados do projeto, e o que a comunidade vem utilizando no mercado para o padrão de desenvolvimento utilizando React e Next.js. Procurando sempre manter um código limpo e apresentável, de tal forma que fique claro o que foi desenvolvido tanto para quem mantém irá manter o código, quanto para quem possa vir a desenvolver novas funcionalidades. Mas, não se prenda a isso, fique a vontade para sugerir novas estruturas/arquiteturas e padrões de códigos que possam ser úteis para o desenvolvimento da comunidade.
 
-### ⌨️ Como revisar um código  (VITOR)
+### ⌨️ Como revisar um código
+Antes de tudo é preciso que a PR esteja bem descrita sobre o que o desenvolvedor almeja entregar, sendo assim, se estiver muito vago a descrição, não ficará claro para aqueles que irão revisar sobre o que se trata aquela PR.
+A primeira coisa que precisamos validar é se o código funciona e faz o que ele deveria fazer corretamente. Só então devemos ver se o código é elegante ou fácil de ler. Essa "hierarquia" de importâncias evita ruídos desnecessários e falhas de comunicação dos PRs. 
+Não é uma boa idéia jogar a obrigação de garantir que o código funcione para quem está fazendo o review.
+- Familiarize-se com o problema. A pessoa perdeu tempo escrevendo um bom PR, portando leia a descrição e entenda o que está sendo feito.
+- Não seja grosseiro. Mesmo que tudo esteja ruim, sempre existe a forma educada de falar isso. Entender o contexto ajuda muito.
+- Dê sugestões de alteração em vez de ordens. `O que você acha?` ou `Você concorda?` ajudam a mudar o tom.
+- Caso não entenda algum ponto, pergunte.
+- Reconheça os pontos positivos. Quando identificar algum código ou alguma técnica notável, não deixe de valorizar com elogios.
+- Use e abuse dos emojis. `Isso pode ser um problema` será sempre mais frio e distante que um bom `Isso pode ser um problema 🤔` .
 
-
-### ⌨️ Quando mergear uma nova funcionalidade/Como mergear  (VITOR)
+### ⌨️ Quando mergear uma nova funcionalidade/Como mergear
+Após subir uma feature ou correção para revisão, abrir PR, se deve esperar que todo o pipeline de testes e build rodem sem problemas, caso venha a ter algum erro nesse processo, o responsável pela PR deverá atuar sobre isto ou, se for o caso necessário, acionar algum dos mantenedores para o auxiliar na correção deste.
+Com todo o pipeline executado sem erros, o responsável pela PR deverá esperar as aprovações necessárias para que a funcionalidade possa vir a ser mergeada, é uma dessas aprovações é necessária que seja de um dos mantenedores do projeto.
 
 
 ## 📌 Ferramentas de conexão

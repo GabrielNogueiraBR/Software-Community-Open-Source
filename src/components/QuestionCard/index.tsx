@@ -11,9 +11,9 @@ interface QuestionCardProps {
   id: string;
   title: string;
   description: string;
-  date: string;
+  date: Date;
   complexity: number;
-  categories: string[];
+  category: string;
 }
 
 export default function QuestionCard({
@@ -22,7 +22,7 @@ export default function QuestionCard({
   description,
   date,
   complexity,
-  categories,
+  category,
 }: QuestionCardProps) {
   return (
     <Stack
@@ -38,7 +38,7 @@ export default function QuestionCard({
       }}
     >
       <CardHeader id={id} title={title} complexity={complexity} />
-      <CardCategories categories={categories} />
+      <CardCategories category={category} />
       <CardContent content={description} />
       <CardFooter date={date} />
     </Stack>

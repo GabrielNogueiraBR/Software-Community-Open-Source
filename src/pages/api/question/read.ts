@@ -17,7 +17,7 @@ type Filters = {
   resolved: boolean;
 }
 
-const filterQuestions = (questions: Question[], filters: Filters): Question[] => {
+export const filterQuestions = (questions: Question[], filters: Filters): Question[] => {
   const { category, complexity, resolved, title } = filters;
 
   return questions.filter((question) =>{
@@ -35,14 +35,14 @@ const filterQuestions = (questions: Question[], filters: Filters): Question[] =>
   });
 }
 
-const findQuestionsAtFirestore = async (): Promise<Question[]> => {
+export const findQuestionsAtFirestore = async (): Promise<Question[]> => {
   const collectionName =
     process.env.NEXT_PUBLIC_STAGE === "production"
       ? "question"
       : "question_dev";
 
   const collectionRef = firestore.collection(collectionName);
-  const query = await collectionRef
+  const documents = await collectionRef
     .select(
       'assignee',
       'title', 
@@ -60,7 +60,7 @@ const findQuestionsAtFirestore = async (): Promise<Question[]> => {
     .get()
     .then((res) => res.docs);
 
-  return query.map((data) => {
+  return documents.map((data) => {
     const fields = data['_fieldsProto'];
     const ref = data['_ref'];
     
@@ -70,7 +70,12 @@ const findQuestionsAtFirestore = async (): Promise<Question[]> => {
     obj['id'] = id;
 
     for (const [field, value] of Object.entries(fields)) {
-      obj[field] = value['integerValue'] ?? value['stringValue'];
+      obj[field] = value['integerValue'] 
+        ?? value['stringValue'] 
+        ?? (value['timestampValue'] && Number(value['timestampValue'].seconds * 1000))
+        ?? value['booleanValue'] 
+        ?? (value['arrayValue'] && value['arrayValue'].values)
+        ?? (value['mapValue'] && value['mapValue'].fields);
     }
 
     return obj;

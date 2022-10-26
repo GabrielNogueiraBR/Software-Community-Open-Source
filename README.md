@@ -209,7 +209,7 @@ Não é uma boa idéia jogar a obrigação de garantir que o código funcione pa
 
 ### ⌨️ Quando mergear uma nova funcionalidade/Como mergear
 Após subir uma feature ou correção para revisão, abrir PR, se deve esperar que todo o pipeline de testes e build rodem sem problemas, caso venha a ter algum erro nesse processo, o responsável pela PR deverá atuar sobre isto ou, se for o caso necessário, acionar algum dos mantenedores para o auxiliar na correção deste.
-Com todo o pipeline executado sem erros, o responsável pela PR deverá esperar as aprovações necessárias para que a funcionalidade possa vir a ser mergeada, é uma dessas aprovações é necessária que seja de um dos mantenedores do projeto.
+Com todo o pipeline executado sem erros, o responsável pela PR deverá esperar as aprovações necessárias para que a funcionalidade possa vir a ser mergeada, e uma dessas aprovações é necessária que seja de um dos mantenedores do projeto.
 
 
 ## 📌 Ferramentas de conexão

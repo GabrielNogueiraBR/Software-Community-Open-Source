@@ -17,7 +17,7 @@ type Filters = {
   resolved: boolean;
 }
 
-const filterQuestions = (questions: Question[], filters: Filters): Question[] => {
+export const filterQuestions = (questions: Question[], filters: Filters): Question[] => {
   const { category, complexity, resolved, title } = filters;
 
   return questions.filter((question) =>{
@@ -35,7 +35,7 @@ const filterQuestions = (questions: Question[], filters: Filters): Question[] =>
   });
 }
 
-const findQuestionsAtFirestore = async (): Promise<Question[]> => {
+export const findQuestionsAtFirestore = async (): Promise<Question[]> => {
   const collectionName =
     process.env.NEXT_PUBLIC_STAGE === "production"
       ? "question"

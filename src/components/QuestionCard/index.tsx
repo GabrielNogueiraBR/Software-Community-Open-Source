@@ -11,7 +11,7 @@ interface QuestionCardProps {
   id: string;
   title: string;
   description: string;
-  date: string;
+  date: Date;
   complexity: number;
   category: string;
 }

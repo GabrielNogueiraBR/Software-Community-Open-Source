@@ -1,16 +1,15 @@
 import { SimpleGrid } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
-import api from "../../services/api";
+import React from "react";
+
+import { Question } from "../../types/question";
+
 import QuestionCard from "../QuestionCard";
 
-export default function QuestionCardList() {
-  const [ questions, setQuestions ] = useState([]);
+interface QuestionCardListProps {
+  questions: Question[];
+}
 
-  useEffect(() => {
-    api.get('/question/read')
-      .then((res) => setQuestions(res.data))
-  }, []);
-
+export default function QuestionCardList({ questions }: QuestionCardListProps) {
   return (
     <SimpleGrid
       flex="1"

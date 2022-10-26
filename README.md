@@ -184,7 +184,7 @@ Os exemplos de comportamentos inaceitáveis pelos participantes incluem:
 * Qualquer outra forma de conduta que pode ser razoavelmente considerada inapropriada num ambiente profissional
 
 ### ⌨️ Como contribuir
-Para realizar contribuições para o projeto, deverá a configuração do projeto em seu ambiente de desenvolvimento, como foi descrito na seção *Começando*.
+Para realizar contribuições para o projeto, deverá realizar a configuração do projeto em seu ambiente de desenvolvimento, como foi descrito na seção *Começando*.
 A partir deste ponto você poderá realizar a criação de _features_ e correção de _bugs_ seguindo os padrãos impostos para este projeto, através do que está descrito neste README.md.
 
 ### ⌨️ Como subir modificações

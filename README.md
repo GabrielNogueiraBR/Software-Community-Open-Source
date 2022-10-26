@@ -194,7 +194,7 @@ Após realizado todo o desenvolvimento local, testado e sem anomalias que afetem
 Evite subir grandes modificações, pois isso pode afetar negativamente o review lá na frente, se tornando massante e mais suscetível a erros. 
 
 ### ⌨️ Padrões de codificação/Políticas de código
-O contribuidor deve seguir os padrões de desenvolvimento impostos pelos criados do projeto, e o que a comunidade vem utilizando no mercado para o padrão de desenvolvimento utilizando React e Next.js. Procurando sempre manter um código limpo e apresentável, de tal forma que fique claro o que foi desenvolvido tanto para quem mantém irá manter o código, quanto para quem possa vir a desenvolver novas funcionalidades. Mas, não se prenda a isso, fique a vontade para sugerir novas estruturas/arquiteturas e padrões de códigos que possam ser úteis para o desenvolvimento da comunidade.
+O contribuidor deve seguir os padrões de desenvolvimento impostos pelos criados do projeto, e o que a comunidade vem utilizando no mercado para o padrão de desenvolvimento utilizando React e Next.js. Procurando sempre manter um código limpo e apresentável, de tal forma que fique claro o que foi desenvolvido tanto para quem mantém/irá manter o código, quanto para quem possa vir a desenvolver novas funcionalidades. Mas, não se prenda a isso, fique a vontade para sugerir novas estruturas/arquiteturas e padrões de códigos que possam ser úteis para o desenvolvimento da comunidade.
 
 ### ⌨️ Como revisar um código
 Antes de tudo é preciso que a PR esteja bem descrita sobre o que o desenvolvedor almeja entregar, sendo assim, se estiver muito vago a descrição, não ficará claro para aqueles que irão revisar sobre o que se trata aquela PR.

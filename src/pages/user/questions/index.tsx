@@ -40,6 +40,7 @@ export default function QuestionList({
                 size="sm"
                 fontSize="small"
                 colorScheme="pink"
+                cursor="pointer"
                 leftIcon={<Icon as={RiAddLine} fontSize="20" />}
               >
                 Nova Dúvida
@@ -76,6 +77,7 @@ export default function QuestionList({
                         size="sm"
                         fontSize="small"
                         colorScheme="purple"
+                        cursor="pointer"
                         leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
                       >
                         Editar Dúvida

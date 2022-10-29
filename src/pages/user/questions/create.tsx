@@ -19,7 +19,6 @@ import Header from "../../../components/Header";
 
 import * as yup from "yup";
 import {
-  Question,
   QuestionCategory,
   QuestionPayload,
 } from "../../../types/question";

@@ -3,7 +3,7 @@ import React from "react";
 import Header from "../components/Header";
 import QuestionCardList from "../components/QuestionCardList";
 import Sidebar from "../components/Sidebar";
-import { findQuestionsAtFirestore } from "./api/question/read";
+import { findQuestionsAtFirestore } from "../services/firebase/firestore/read";
 
 export default function Home({ questions }) {
   return (

@@ -17,8 +17,8 @@ import Link from "next/link";
 import Header from "../../../components/Header";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
 import Sidebar from "../../../components/Sidebar";
-import { findQuestionsAtFirestore } from "../../api/question/read";
 import { InferGetServerSidePropsType } from "next";
+import { findQuestionsAtFirestore } from "../../../services/firebase/firestore/read";
 
 export default function QuestionList({
   questions,

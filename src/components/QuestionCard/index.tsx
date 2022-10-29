@@ -1,6 +1,4 @@
-import {
-  Stack,
-} from "@chakra-ui/react";
+import { Stack } from "@chakra-ui/react";
 import React from "react";
 import CardCategories from "./CardCategories";
 import CardContent from "./CardContent";
@@ -29,7 +27,7 @@ export default function QuestionCard({
       backgroundColor="gray.800"
       borderRadius="8"
       paddingX="4"
-      paddingY="2.5"
+      paddingY="4"
       maxW={{ base: "300px", sm: "450px", md: "400px", lg: "400px" }}
       spacing="1"
       _hover={{

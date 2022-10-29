@@ -14,6 +14,7 @@ export default function QuestionCardList({ questions }: QuestionCardListProps) {
     <SimpleGrid
       flex="1"
       minChildWidth={{ base: "80%", sm: "300px", md: "350px" }}
+      height="fit-content"
       spacing="40px"
     >
       {questions.map((question) => (

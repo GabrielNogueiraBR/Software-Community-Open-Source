@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import * as yup from "yup";
-import firestore from "../../../../services/firebase/firestore";
+import { updateQuestionAtFirestore } from "../../../../services/firebase/firestore/update";
 import { QuestionCategory } from "../../../../types/question";
 
 const schema = yup.object().shape({
@@ -10,19 +10,9 @@ const schema = yup.object().shape({
   complexity: yup.number().min(0).max(5).required(),
 });
 
-const updateQuestionAtFirestore = async (id: string, body: any): Promise<void> => {
-  const collectionName =
-    process.env.NEXT_PUBLIC_STAGE === "production"
-      ? "question"
-      : "question_dev";
-
-  const collectionReference = firestore.collection(collectionName);
-  await collectionReference.doc(id).update(body);
-}
-
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse
 ) {
   try {
     if (req.method !== "PATCH") {
@@ -42,7 +32,9 @@ export default async function handler(
     try {
       await updateQuestionAtFirestore(questionId, body);
     } catch (error) {
-      return res.status(500).send({ message: "Error while updating question." });
+      return res
+        .status(500)
+        .send({ message: "Error while updating question." });
     }
 
     return res.status(200).end();

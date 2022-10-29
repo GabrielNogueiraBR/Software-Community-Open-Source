@@ -17,8 +17,12 @@ import Link from "next/link";
 import Header from "../../../components/Header";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
 import Sidebar from "../../../components/Sidebar";
+import { InferGetServerSidePropsType } from "next";
+import { findQuestionsAtFirestore } from "../../../services/firebase/firestore/read";
 
-export default function QuestionList() {
+export default function QuestionList({
+  questions,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <Box>
       <Header />
@@ -36,6 +40,7 @@ export default function QuestionList() {
                 size="sm"
                 fontSize="small"
                 colorScheme="pink"
+                cursor="pointer"
                 leftIcon={<Icon as={RiAddLine} fontSize="20" />}
               >
                 Nova Dúvida
@@ -50,39 +55,71 @@ export default function QuestionList() {
                 </Th>
                 <Th>Dúvida</Th>
                 <Th>Data de cadastro</Th>
+                <Th></Th>
               </Tr>
             </Thead>
             <Tbody>
-              <Tr>
-                <Td px={["4", "4", "6"]}>
-                  <Checkbox colorScheme={"pink"} />
-                </Td>
-                <Td>
-                  <Box>
-                    <Text fontWeight={"bold"}>
-                      Como trocar versão do Node usando nvm?
-                    </Text>
-                  </Box>
-                </Td>
-                <Td>19 de Setembro, 2022</Td>
-                <Td width="8">
-                <Link href="/user/questions/editor">
-                  <Button
-                    as="a"
-                    size="sm"
-                    fontSize="small"
-                    colorScheme="purple"
-                    leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
-                  >
-                    Editar Dúvida
-                  </Button>
-                  </Link>
-                </Td>
-              </Tr>
+              {questions.map((question, index) => (
+                <Tr key={index}>
+                  <Td px={["4", "4", "6"]}>
+                    <Checkbox colorScheme={"pink"} />
+                  </Td>
+                  <Td>
+                    <Box>
+                      <Text fontWeight={"bold"}>{question.title}</Text>
+                    </Box>
+                  </Td>
+                  <Td>{question.created}</Td>
+                  <Td width="8">
+                    <Link href={`/user/questions/${question.id}/editor`}>
+                      <Button
+                        as="a"
+                        size="sm"
+                        fontSize="small"
+                        colorScheme="purple"
+                        cursor="pointer"
+                        leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
+                      >
+                        Editar Dúvida
+                      </Button>
+                    </Link>
+                  </Td>
+                </Tr>
+              ))}
             </Tbody>
           </Table>
         </Box>
       </Flex>
     </Box>
   );
+}
+
+export async function getServerSideProps() {
+  const questions = await (
+    await findQuestionsAtFirestore()
+  ).sort((a, b) => (a.created < b.created ? 1 : -1));
+
+  const formateDate = (date: Date) =>
+    date
+      ? Intl.DateTimeFormat("pt-BR", {
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        }).format(new Date(date))
+      : "";
+
+  const questionsFormated = questions.map((question) => {
+    return {
+      ...question,
+      created: formateDate(question.created),
+      updated: formateDate(question.updated),
+      resolvedDate: formateDate(question.resolvedDate),
+    };
+  });
+
+  return {
+    props: {
+      questions: questionsFormated,
+    },
+  };
 }

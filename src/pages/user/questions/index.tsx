@@ -95,7 +95,9 @@ export default function QuestionList({
 }
 
 export async function getServerSideProps() {
-  const questions = await findQuestionsAtFirestore();
+  const questions = await (
+    await findQuestionsAtFirestore()
+  ).sort((a, b) => (a.created < b.created ? 1 : -1));
 
   const formateDate = (date: Date) =>
     date

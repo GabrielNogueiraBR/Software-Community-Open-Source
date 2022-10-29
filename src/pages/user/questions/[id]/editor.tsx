@@ -11,21 +11,18 @@ import {
 import { useFormik } from "formik";
 import Link from "next/link";
 import { FormEvent } from "react";
-import { Input } from "../../../components/Form/Input";
-import { NumberInput } from "../../../components/Form/NumberInput";
-import { Select } from "../../../components/Form/Select";
-import { TextArea } from "../../../components/Form/TextArea";
-import Header from "../../../components/Header";
+import { Input } from "../../../../components/Form/Input";
+import { NumberInput } from "../../../../components/Form/NumberInput";
+import { Select } from "../../../../components/Form/Select";
+import { TextArea } from "../../../../components/Form/TextArea";
+import Header from "../../../../components/Header";
 
 import * as yup from "yup";
-import {
-  QuestionCategory,
-  QuestionPayload,
-} from "../../../types/question";
+import { QuestionCategory, QuestionPayload } from "../../../../types/question";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import Sidebar from "../../../components/Sidebar";
-import api from "../../../services/api";
+import Sidebar from "../../../../components/Sidebar";
+import api from "../../../../services/api";
 
 const formEditSchema = yup.object().shape({
   title: yup.string().required(),
@@ -159,4 +156,13 @@ export default function EditionUser() {
       </Box>
     </>
   );
+}
+
+export async function getServerSideProps({ params }) {
+  const { id } = params;
+  // const question = findQuestionsAtFirestore().then()
+
+  return {
+    props: {},
+  };
 }

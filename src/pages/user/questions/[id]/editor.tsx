@@ -24,6 +24,9 @@ import Head from "next/head";
 import Sidebar from "../../../../components/Sidebar";
 import api from "../../../../services/api";
 
+import { findQuestionByIdAtFirestore } from "../../../../services/firebase/firestore/read";
+import { InferGetServerSidePropsType } from "next";
+
 const formEditSchema = yup.object().shape({
   title: yup.string().required(),
   description: yup.string().required(),
@@ -31,19 +34,21 @@ const formEditSchema = yup.object().shape({
   complexity: yup.number().min(0).max(5).required(),
 });
 
-export default function EditionUser() {
+export default function EditionUser({
+  question,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const router = useRouter();
 
   const formik = useFormik({
     initialValues: {
-      title: "Como trocar versão do Node usando nvm?",
-      category: "typescript",
-      complexity: 0,
-      description: "",
+      title: question.title,
+      category: question.category,
+      complexity: question.complexity,
+      description: question.description,
     },
     validationSchema: formEditSchema,
     onSubmit: async ({ title, category, complexity, description }) => {
-      const question: QuestionPayload = {
+      const payload: QuestionPayload = {
         assignee: {
           name: "admin",
         },
@@ -54,7 +59,7 @@ export default function EditionUser() {
       };
 
       await api
-        .post("/question/editor", { ...question })
+        .patch(`/question/${question.id}/update`, { ...payload })
         .then(() => router.push("/user/questions"))
         .catch((e) => console.error(e));
     },
@@ -158,11 +163,15 @@ export default function EditionUser() {
   );
 }
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps(context) {
+  const { params } = context;
   const { id } = params;
-  // const question = findQuestionsAtFirestore().then()
+
+  const question = await findQuestionByIdAtFirestore(id);
 
   return {
-    props: {},
+    props: {
+      question,
+    },
   };
 }

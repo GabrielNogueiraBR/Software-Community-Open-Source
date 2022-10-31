@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 import * as yup from "yup";
 import { insertCategoryAtFirestore } from "../../../services/firebase/firestore/create";
+import { findCategoryByNameAtFirestore } from "../../../services/firebase/firestore/read";
 
 const schema = yup.object().shape({
   name: yup.string().required(),
@@ -25,11 +26,12 @@ export default async function handler(
       return res.status(400).end("Data format invalid");
     }
 
-    //TODO: verificar se ja existe um registro com esse nome -> 409 conflito
+    const alreadyExists = await findCategoryByNameAtFirestore(body.name);
+    if (alreadyExists) return res.status(409).end("Category already exists");
 
-    const question = await insertCategoryAtFirestore(body);
+    const category = await insertCategoryAtFirestore(body);
 
-    return res.status(200).json(question);
+    return res.status(200).json(category);
   } catch (e) {
     res.status(500).end(`Error on server: ${e}`);
   }

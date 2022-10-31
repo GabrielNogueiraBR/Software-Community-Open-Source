@@ -139,3 +139,27 @@ export const findCategoriesAtFirestore = async (): Promise<Category[]> => {
 
   return documents.map((data) => getDataFromDocument(data));
 };
+
+export const findCategoryByNameAtFirestore = async (
+  name: string
+): Promise<Category> => {
+  const collectionName =
+    process.env.NEXT_PUBLIC_STAGE === "production"
+      ? "category"
+      : "category_dev";
+
+  const collectionReference = firestore.collection(collectionName);
+
+  const documents = await collectionReference
+    .select("id", "name", "created", "updated")
+    .where("name", "==", name)
+    .get()
+    .then((res) => res.docs);
+
+  if (!documents.length) return null;
+  const categoryDoc = documents[0];
+
+  const category = getDataFromDocument(categoryDoc);
+
+  return category;
+};

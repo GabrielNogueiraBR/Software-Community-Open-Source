@@ -2,7 +2,7 @@ import firestore from ".";
 import { Filters } from "../../../types/filters";
 import { Question } from "../../../types/question";
 
-export const getQuestionFromDocument = (questionDocument: any): Question => {
+export const getDataFromDocument = (questionDocument: any): Question => {
   const fields = questionDocument["_fieldsProto"];
   const ref = questionDocument["_ref"];
 
@@ -34,9 +34,27 @@ export const findQuestionByIdAtFirestore = async (id: string) => {
   const collectionReference = firestore.collection(collectionName);
 
   const questionDoc = await collectionReference.doc(id).get();
-  const question = getQuestionFromDocument(questionDoc);
+  if (!questionDoc.exists) return null;
+
+  const question = getDataFromDocument(questionDoc);
 
   return question;
+};
+
+export const findCategoryByIdAtFirestore = async (id: string) => {
+  const collectionName =
+    process.env.NEXT_PUBLIC_STAGE === "production"
+      ? "category"
+      : "category_dev";
+
+  const collectionReference = firestore.collection(collectionName);
+
+  const categoryDoc = await collectionReference.doc(id).get();
+  if (!categoryDoc.exists) return null;
+
+  const category = getDataFromDocument(categoryDoc);
+
+  return category;
 };
 
 export const filterQuestions = (
@@ -86,5 +104,5 @@ export const findQuestionsAtFirestore = async (): Promise<Question[]> => {
     .get()
     .then((res) => res.docs);
 
-  return documents.map((data) => getQuestionFromDocument(data));
+  return documents.map((data) => getDataFromDocument(data));
 };

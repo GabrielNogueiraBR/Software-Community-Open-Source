@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 import * as yup from "yup";
 import { QuestionCategory } from "../../../types/question";
-import { Filters } from "../../../types/filters";
+import { QuestionFilters } from "../../../types/filters";
 import {
   filterQuestions,
   findQuestionsAtFirestore,
@@ -33,7 +33,7 @@ export default async function handler(
       return res.status(400).end("Data format invalid");
     }
 
-    const { category, complexity, resolved, title } = query as any as Filters;
+    const { category, complexity, resolved, title } = query as any as QuestionFilters;
     const questions = await findQuestionsAtFirestore();
     const filteredQuestions = filterQuestions(questions, {
       category,

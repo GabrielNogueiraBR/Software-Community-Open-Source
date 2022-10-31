@@ -1,8 +1,9 @@
 import firestore from ".";
-import { Filters } from "../../../types/filters";
+import { Category } from "../../../types/category";
+import { CategoryFilters, QuestionFilters } from "../../../types/filters";
 import { Question } from "../../../types/question";
 
-export const getDataFromDocument = (questionDocument: any): Question => {
+export const getDataFromDocument = (questionDocument: any): any => {
   const fields = questionDocument["_fieldsProto"];
   const ref = questionDocument["_ref"];
 
@@ -59,7 +60,7 @@ export const findCategoryByIdAtFirestore = async (id: string) => {
 
 export const filterQuestions = (
   questions: Question[],
-  filters: Filters
+  filters: QuestionFilters
 ): Question[] => {
   const { category, complexity, resolved, title } = filters;
 
@@ -88,6 +89,7 @@ export const findQuestionsAtFirestore = async (): Promise<Question[]> => {
   const collectionRef = firestore.collection(collectionName);
   const documents = await collectionRef
     .select(
+      "id",
       "assignee",
       "title",
       "description",
@@ -101,6 +103,37 @@ export const findQuestionsAtFirestore = async (): Promise<Question[]> => {
       "updated",
       "data"
     )
+    .get()
+    .then((res) => res.docs);
+
+  return documents.map((data) => getDataFromDocument(data));
+};
+
+export const filterCategories = (
+  categories: Category[],
+  filters: CategoryFilters
+): Category[] => {
+  const { name } = filters;
+
+  return categories.filter((category) => {
+    let filterName = true;
+
+    if (name)
+      filterName = category.name.toLowerCase().includes(name.toLowerCase());
+
+    return filterName;
+  });
+};
+
+export const findCategoriesAtFirestore = async (): Promise<Category[]> => {
+  const collectionName =
+    process.env.NEXT_PUBLIC_STAGE === "production"
+      ? "category"
+      : "category_dev";
+
+  const collectionRef = firestore.collection(collectionName);
+  const documents = await collectionRef
+    .select("id", "name", "created", "updated")
     .get()
     .then((res) => res.docs);
 

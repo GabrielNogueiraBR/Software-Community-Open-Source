@@ -1,8 +1,9 @@
 import firestore from ".";
-import { Filters } from "../../../types/filters";
+import { Category } from "../../../types/category";
+import { CategoryFilters, QuestionFilters } from "../../../types/filters";
 import { Question } from "../../../types/question";
 
-export const getQuestionFromDocument = (questionDocument: any): Question => {
+export const getDataFromDocument = (questionDocument: any): any => {
   const fields = questionDocument["_fieldsProto"];
   const ref = questionDocument["_ref"];
 
@@ -34,14 +35,32 @@ export const findQuestionByIdAtFirestore = async (id: string) => {
   const collectionReference = firestore.collection(collectionName);
 
   const questionDoc = await collectionReference.doc(id).get();
-  const question = getQuestionFromDocument(questionDoc);
+  if (!questionDoc.exists) return null;
+
+  const question = getDataFromDocument(questionDoc);
 
   return question;
 };
 
+export const findCategoryByIdAtFirestore = async (id: string) => {
+  const collectionName =
+    process.env.NEXT_PUBLIC_STAGE === "production"
+      ? "category"
+      : "category_dev";
+
+  const collectionReference = firestore.collection(collectionName);
+
+  const categoryDoc = await collectionReference.doc(id).get();
+  if (!categoryDoc.exists) return null;
+
+  const category = getDataFromDocument(categoryDoc);
+
+  return category;
+};
+
 export const filterQuestions = (
   questions: Question[],
-  filters: Filters
+  filters: QuestionFilters
 ): Question[] => {
   const { category, complexity, resolved, title } = filters;
 
@@ -70,6 +89,7 @@ export const findQuestionsAtFirestore = async (): Promise<Question[]> => {
   const collectionRef = firestore.collection(collectionName);
   const documents = await collectionRef
     .select(
+      "id",
       "assignee",
       "title",
       "description",
@@ -86,5 +106,60 @@ export const findQuestionsAtFirestore = async (): Promise<Question[]> => {
     .get()
     .then((res) => res.docs);
 
-  return documents.map((data) => getQuestionFromDocument(data));
+  return documents.map((data) => getDataFromDocument(data));
+};
+
+export const filterCategories = (
+  categories: Category[],
+  filters: CategoryFilters
+): Category[] => {
+  const { name } = filters;
+
+  return categories.filter((category) => {
+    let filterName = true;
+
+    if (name)
+      filterName = category.name.toLowerCase().includes(name.toLowerCase());
+
+    return filterName;
+  });
+};
+
+export const findCategoriesAtFirestore = async (): Promise<Category[]> => {
+  const collectionName =
+    process.env.NEXT_PUBLIC_STAGE === "production"
+      ? "category"
+      : "category_dev";
+
+  const collectionRef = firestore.collection(collectionName);
+  const documents = await collectionRef
+    .select("id", "name", "created", "updated")
+    .get()
+    .then((res) => res.docs);
+
+  return documents.map((data) => getDataFromDocument(data));
+};
+
+export const findCategoryByNameAtFirestore = async (
+  name: string
+): Promise<Category> => {
+  const collectionName =
+    process.env.NEXT_PUBLIC_STAGE === "production"
+      ? "category"
+      : "category_dev";
+
+  const collectionReference = firestore.collection(collectionName);
+
+  const documents = await collectionReference
+    .select("id", "name", "created", "updated")
+    .where("name", "==", name)
+    .get()
+    .then((res) => res.docs);
+
+  if (!documents.length) return null;
+  const categoryDoc = documents[0];
+
+  const category = getDataFromDocument(categoryDoc);
+
+  return category;
 };

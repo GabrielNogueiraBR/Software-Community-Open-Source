@@ -98,7 +98,7 @@ export default function EditionUser({
                   <Input
                     name="title"
                     label="Título"
-                    error={formik.errors.title}
+                    error={formik.errors.title.toString()}
                     flex="2"
                     onChange={formik.handleChange}
                     value={formik.values.title}
@@ -113,7 +113,7 @@ export default function EditionUser({
                     name="category"
                     label="Categoria"
                     options={["Typescript", "Javascript", "Next.Js", "Docker"]}
-                    error={formik.errors.category}
+                    error={formik.errors.category.toString()}
                     onChange={formik.handleChange}
                     value={formik.values.category}
                     flex="1"
@@ -124,7 +124,7 @@ export default function EditionUser({
                     min={0}
                     max={5}
                     defaultValue={0}
-                    error={formik.errors.complexity}
+                    error={formik.errors.complexity.toString()}
                     onChange={(valueString, valueNumber) =>
                       formik.setFieldValue("complexity", valueNumber)
                     }
@@ -137,7 +137,7 @@ export default function EditionUser({
                 <TextArea
                   name="description"
                   label="Descrição"
-                  error={formik.errors.description}
+                  error={formik.errors.description.toString()}
                   onChange={formik.handleChange}
                   value={formik.values.description}
                 />

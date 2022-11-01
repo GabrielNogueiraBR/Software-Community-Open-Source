@@ -12,3 +12,16 @@ export const updateQuestionAtFirestore = async (
   const collectionReference = firestore.collection(collectionName);
   await collectionReference.doc(id).update(body);
 };
+
+export const updateCategoryAtFirestore = async (
+  id: string,
+  body: any
+): Promise<void> => {
+  const collectionName =
+    process.env.NEXT_PUBLIC_STAGE === "production"
+      ? "category"
+      : "category_dev";
+
+  const collectionReference = firestore.collection(collectionName);
+  await collectionReference.doc(id).update(body);
+};

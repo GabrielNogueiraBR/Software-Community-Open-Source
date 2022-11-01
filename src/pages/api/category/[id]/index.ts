@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { findQuestionByIdAtFirestore } from "../../../../services/firebase/firestore/read";
+import { findCategoryByIdAtFirestore } from "../../../../services/firebase/firestore/read";
 
 export default async function handler(
   req: NextApiRequest,
@@ -14,10 +14,11 @@ export default async function handler(
     const params = req.query;
     const id = params.id as string;
 
-    const question = await findQuestionByIdAtFirestore(id);
-    if (question) return res.status(200).json(question);
+    const category = await findCategoryByIdAtFirestore(id);
 
-    return res.status(404).end("Question not found");
+    if (category) return res.status(200).json(category);
+
+    return res.status(404).end("Category not found");
   } catch (e) {
     res.status(500).end(`Error on server: ${e}`);
   }

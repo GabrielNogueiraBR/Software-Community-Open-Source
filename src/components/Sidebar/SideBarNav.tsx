@@ -17,7 +17,7 @@ export function SideBarNav() {
         <NavLink icon={RiBarChart2Fill} href="/" shouldMatchExactHref>
           Principais dúvidas
         </NavLink>
-        <NavLink icon={RiSearchLine} href="#">
+        <NavLink icon={RiSearchLine} href="#" isDisabled>
           Encontrar dúvidas
         </NavLink>
       </NavSection>
@@ -25,15 +25,15 @@ export function SideBarNav() {
         <NavLink icon={RiListCheck} href="/user/questions">
           Minhas dúvidas
         </NavLink>
-        <NavLink icon={RiUserLine} href="#">
+        <NavLink icon={RiUserLine} href="#" isDisabled>
           Meu Perfil
         </NavLink>
       </NavSection>
       <NavSection title="CATEGORIAS">
-        <NavLink icon={RiSettings2Line} href="#">
+        <NavLink icon={RiSettings2Line} href="#" isDisabled>
           DevOps
         </NavLink>
-        <NavLink icon={RiDatabaseLine} href="#">
+        <NavLink icon={RiDatabaseLine} href="#" isDisabled>
           Banco de Dados
         </NavLink>
       </NavSection>

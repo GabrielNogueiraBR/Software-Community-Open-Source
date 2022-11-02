@@ -14,6 +14,7 @@ interface NavLinkProps extends ChakraLinkProps {
   icon: ElementType;
   children: string;
   href: string;
+  isDisabled?: boolean;
   shouldMatchExactHref?: boolean;
 }
 
@@ -21,12 +22,14 @@ export function NavLink({
   icon,
   children,
   href,
+  isDisabled = false,
   shouldMatchExactHref,
   ...rest
 }: NavLinkProps) {
   return (
     <ActiveLink
       href={href}
+      isDisabled={isDisabled}
       shouldMatchExactHref={shouldMatchExactHref}
       passHref
     >

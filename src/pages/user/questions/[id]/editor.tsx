@@ -41,10 +41,10 @@ export default function EditionUser({
 
   const formik = useFormik({
     initialValues: {
-      title: question.title,
-      category: question.category,
-      complexity: question.complexity,
-      description: question.description,
+      title: String(question.title),
+      category: String(question.category),
+      complexity: Number(question.complexity),
+      description: String(question.description),
     },
     validationSchema: formEditSchema,
     onSubmit: async ({ title, category, complexity, description }) => {
@@ -98,7 +98,7 @@ export default function EditionUser({
                   <Input
                     name="title"
                     label="Título"
-                    error={formik.errors.title.toString()}
+                    error={formik.errors.title}
                     flex="2"
                     onChange={formik.handleChange}
                     value={formik.values.title}
@@ -113,7 +113,7 @@ export default function EditionUser({
                     name="category"
                     label="Categoria"
                     options={["Typescript", "Javascript", "Next.Js", "Docker"]}
-                    error={formik.errors.category.toString()}
+                    error={formik.errors.category}
                     onChange={formik.handleChange}
                     value={formik.values.category}
                     flex="1"
@@ -124,7 +124,7 @@ export default function EditionUser({
                     min={0}
                     max={5}
                     defaultValue={0}
-                    error={formik.errors.complexity.toString()}
+                    error={formik.errors.complexity}
                     onChange={(valueString, valueNumber) =>
                       formik.setFieldValue("complexity", valueNumber)
                     }
@@ -137,7 +137,7 @@ export default function EditionUser({
                 <TextArea
                   name="description"
                   label="Descrição"
-                  error={formik.errors.description.toString()}
+                  error={formik.errors.description}
                   onChange={formik.handleChange}
                   value={formik.values.description}
                 />

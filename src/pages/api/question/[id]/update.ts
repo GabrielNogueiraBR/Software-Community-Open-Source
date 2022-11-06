@@ -1,12 +1,11 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import * as yup from "yup";
 import { updateQuestionAtFirestore } from "../../../../services/firebase/firestore/update";
-import { QuestionCategory } from "../../../../types/question";
 
 const schema = yup.object().shape({
   title: yup.string().required(),
   description: yup.string().required(),
-  category: yup.string().oneOf(Object.values(QuestionCategory)).required(),
+  category: yup.string().required(),
   complexity: yup.number().min(0).max(5).required(),
 });
 

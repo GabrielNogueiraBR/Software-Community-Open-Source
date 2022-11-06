@@ -18,7 +18,7 @@ import { TextArea } from "../../../components/Form/TextArea";
 import Header from "../../../components/Header";
 
 import * as yup from "yup";
-import { QuestionCategory, QuestionPayload } from "../../../types/question";
+import { QuestionPayload } from "../../../types/question";
 import api from "../../../services/api";
 import { useRouter } from "next/router";
 import Head from "next/head";
@@ -29,7 +29,7 @@ import { InferGetServerSidePropsType } from "next";
 const formCreateSchema = yup.object().shape({
   title: yup.string().required(),
   description: yup.string().required(),
-  category: yup.string().oneOf(Object.values(QuestionCategory)).required(),
+  category: yup.string().required(),
   complexity: yup.number().min(0).max(5).required(),
 });
 

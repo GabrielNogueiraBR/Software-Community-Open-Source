@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 import * as yup from "yup";
-import { QuestionCategory } from "../../../types/question";
 import { QuestionFilters } from "../../../types/filters";
 import {
   filterQuestions,
@@ -10,7 +9,7 @@ import {
 
 const schema = yup.object().shape({
   title: yup.string(),
-  category: yup.string().oneOf(Object.values(QuestionCategory)),
+  category: yup.string(),
   complexity: yup.number().min(0).max(5),
   resolved: yup.boolean(),
 });

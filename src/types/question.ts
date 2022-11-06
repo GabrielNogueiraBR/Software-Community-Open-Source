@@ -14,7 +14,7 @@ export interface Question {
   assignee: User;
   title: string;
   description: string;
-  category: QuestionCategory;
+  category: string;
   /** 0 (low) - 5 (high) */
   complexity: number;
   answers: Answer[];
@@ -23,11 +23,4 @@ export interface Question {
   resolvedDate?: Date;
   created?: Date;
   updated?: Date;
-}
-
-export enum QuestionCategory {
-  TYPESCRIPT = "typescript",
-  JAVASCRIPT = "javascript",
-  NEXTJS = "next.js",
-  DOCKER = "docker",
 }

@@ -25,6 +25,7 @@ import Sidebar from "../../../../components/Sidebar";
 import api from "../../../../services/api";
 
 import { findQuestionByIdAtFirestore } from "../../../../services/firebase/firestore/read";
+import { findCategoriesAtFirestore } from "../../../../services/firebase/firestore/read";
 import { InferGetServerSidePropsType } from "next";
 
 const formEditSchema = yup.object().shape({
@@ -35,7 +36,7 @@ const formEditSchema = yup.object().shape({
 });
 
 export default function EditionUser({
-  question,
+  question, categories
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const router = useRouter();
 
@@ -112,7 +113,7 @@ export default function EditionUser({
                   <Select
                     name="category"
                     label="Categoria"
-                    options={["Typescript", "Javascript", "Next.Js", "Docker"]}
+                    options={categories.map((category) => category.name)}
                     error={formik.errors.category}
                     onChange={formik.handleChange}
                     value={formik.values.category}
@@ -168,10 +169,11 @@ export async function getServerSideProps(context) {
   const { id } = params;
 
   const question = await findQuestionByIdAtFirestore(id);
-
+  const categories = await findCategoriesAtFirestore();
   return {
     props: {
       question,
+      categories,
     },
   };
 }

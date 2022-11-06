@@ -18,14 +18,13 @@ import { TextArea } from "../../../components/Form/TextArea";
 import Header from "../../../components/Header";
 
 import * as yup from "yup";
-import {
-  QuestionCategory,
-  QuestionPayload,
-} from "../../../types/question";
+import { QuestionCategory, QuestionPayload } from "../../../types/question";
 import api from "../../../services/api";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Sidebar from "../../../components/Sidebar";
+import { findCategoriesAtFirestore } from "../../../services/firebase/firestore/read";
+import { InferGetServerSidePropsType } from "next";
 
 const formCreateSchema = yup.object().shape({
   title: yup.string().required(),
@@ -34,7 +33,9 @@ const formCreateSchema = yup.object().shape({
   complexity: yup.number().min(0).max(5).required(),
 });
 
-export default function CreateUser() {
+export default function CreateUser({
+  categories,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const router = useRouter();
 
   const formik = useFormik({
@@ -110,7 +111,7 @@ export default function CreateUser() {
                   <Select
                     name="category"
                     label="Categoria"
-                    options={["Typescript", "Javascript", "Next.Js", "Docker"]}
+                    options={categories.map((category) => category.name)}
                     error={formik.errors.category}
                     onChange={formik.handleChange}
                     value={formik.values.category}
@@ -159,4 +160,14 @@ export default function CreateUser() {
       </Box>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  const categories = await findCategoriesAtFirestore();
+
+  return {
+    props: {
+      categories,
+    },
+  };
 }

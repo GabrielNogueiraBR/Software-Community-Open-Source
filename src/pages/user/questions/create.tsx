@@ -33,7 +33,7 @@ const formCreateSchema = yup.object().shape({
   complexity: yup.number().min(0).max(5).required(),
 });
 
-export default function CreateUser({
+export default function CreateQuestion({
   categories,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const router = useRouter();

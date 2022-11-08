@@ -35,7 +35,7 @@ const formEditSchema = yup.object().shape({
   complexity: yup.number().min(0).max(5).required(),
 });
 
-export default function EditionUser({
+export default function EditionQuestion({
   question, categories
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const router = useRouter();

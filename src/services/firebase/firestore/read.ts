@@ -133,7 +133,7 @@ export const findCategoriesAtFirestore = async (): Promise<Category[]> => {
 
   const collectionRef = firestore.collection(collectionName);
   const documents = await collectionRef
-    .select("id", "name", "created", "updated")
+    .select("id", "name", "icon", "created", "updated")
     .get()
     .then((res) => res.docs);
 

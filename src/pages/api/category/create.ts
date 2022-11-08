@@ -6,6 +6,7 @@ import { findCategoryByNameAtFirestore } from "../../../services/firebase/firest
 
 const schema = yup.object().shape({
   name: yup.string().required(),
+  icon: yup.string().required(),
 });
 
 export default async function handler(

@@ -34,7 +34,7 @@ export const insertQuestionAtFirestore = async (
 export const insertCategoryAtFirestore = async (
   body: any
 ): Promise<Category> => {
-  const { name } = body;
+  const { name, icon } = body;
 
   const collectionName =
     process.env.NEXT_PUBLIC_STAGE === "production"
@@ -45,6 +45,7 @@ export const insertCategoryAtFirestore = async (
 
   const category: Category = {
     name,
+    icon,
     created: new Date(),
     updated: new Date(),
   };

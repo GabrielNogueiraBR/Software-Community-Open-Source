@@ -18,7 +18,7 @@ import { TextArea } from "../../../components/Form/TextArea";
 import Header from "../../../components/Header";
 
 import * as yup from "yup";
-import { QuestionPayload } from "../../../types/question";
+import {QuestionPayload } from "../../../types/question";
 import api from "../../../services/api";
 import { useRouter } from "next/router";
 import Head from "next/head";

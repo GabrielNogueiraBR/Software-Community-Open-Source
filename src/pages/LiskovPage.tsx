@@ -84,6 +84,7 @@ export default function Teste() {
           "Garantir novas classes derivadas estão estendendo das classes base mas sem alterar o seu comportamento"
         )}
         {Topico("Segurança na implementação dos subtipos")}
+        {Topico("Auxilio nos testes unitários")}
       </Flex>
 
       <Flex direction="column" padding="0px 10%">

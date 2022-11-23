@@ -64,7 +64,9 @@ export default function Teste() {
         </Text>
         <Flex direction="row" mb="30px">
           <Text color="gray.400" fontWeight={400} fontSize="24px" as="i">
-            "Classes derivadas devem poder ser substitutas de suas classes base"
+            {
+              '"Classes derivadas devem poder ser substitutas de suas classes base"'
+            }
           </Text>
           <Text color="gray.400" fontWeight={500} fontSize="24px">
             - Robert C. Martin
@@ -92,7 +94,12 @@ export default function Teste() {
           Violação do principio
         </Text>
         <Flex direction="row">
-          <Image boxSize="700px" objectFit="cover" src={ViolacaoLSP.src} />
+          <Image
+            boxSize="700px"
+            objectFit="cover"
+            src={ViolacaoLSP.src}
+            alt="violacao liskov"
+          />
           <Flex direction="column" justify="center">
             {Topico(
               "Bicicleta se enquadra como um meio de transporte, porém não apresenta motor"
@@ -109,9 +116,14 @@ export default function Teste() {
           Implementação no Front End
         </Text>
 
-        <Image src={LiskovRascunho.src} />
+        <Image src={LiskovRascunho.src} alt="liskov rascunho" />
 
-        <Image boxSize="700px" objectFit="cover" src={InterfaceProps.src} />
+        <Image
+          boxSize="700px"
+          objectFit="cover"
+          src={InterfaceProps.src}
+          alt="interface props"
+        />
 
         <Flex
           direction="row"
@@ -146,7 +158,7 @@ export default function Teste() {
         cancelButtonText="Cancel"
         isOpen={isBaseOpen}
         onClose={onBaseClose}
-      ></BaseDialog>
+      />
 
       <ErrorDialog
         title="Error"
@@ -169,7 +181,7 @@ export default function Teste() {
         confirmHandler={() => console.log("confirmHandler")}
         isOpen={isErrorOpen}
         onClose={onErrorClose}
-      ></ErrorDialog>
+      />
 
       <WarningDialog
         title="Warning"
@@ -185,7 +197,7 @@ export default function Teste() {
         confirmHandler={() => console.log("confirmHandler")}
         isOpen={isWarningOpen}
         onClose={onWarningClose}
-      ></WarningDialog>
+      />
     </Flex>
   );
 }

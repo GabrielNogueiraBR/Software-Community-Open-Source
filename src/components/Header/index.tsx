@@ -40,7 +40,11 @@ export default function Header() {
       {isWideVersion && <SearchBox />}
 
       <Flex align="center" marginLeft="auto">
-        <Profile showProfileData={isWideVersion} />
+        <Profile
+          name="Nome do usuário"
+          email="email@mail.com"
+          showProfileData={isWideVersion}
+        />
       </Flex>
     </Flex>
   );

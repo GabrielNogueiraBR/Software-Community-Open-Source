@@ -17,7 +17,7 @@ export function Logo() {
           as={"span"}
           color="pink.500"
           marginLeft="1"
-          sx={{ transform: "scaleX(-1)" }}
+          sx={{ transform: "scaleX(-1)", display: "inline-block" }}
         >
           ?
         </Text>

@@ -1,16 +1,13 @@
 import { Badge, Flex } from "@chakra-ui/react";
 import React from "react";
+import { useDateFormater } from "../../hooks/useDateFormater";
 
 interface CardFooterProps {
   date: Date;
 }
 
 export default function CardFooter({ date }: CardFooterProps) {
-  const formatedDate = new Intl.DateTimeFormat("pt-BR", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  }).format(new Date(date));
+  const { dateFormater } = useDateFormater();
 
   return (
     <Flex
@@ -26,7 +23,7 @@ export default function CardFooter({ date }: CardFooterProps) {
         borderRadius="4px"
         textTransform="none"
       >
-        {formatedDate}
+        {dateFormater(date)}
       </Badge>
     </Flex>
   );

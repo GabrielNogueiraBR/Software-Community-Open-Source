@@ -20,7 +20,9 @@ export default function Home({ questions }) {
 }
 
 export async function getServerSideProps() {
-  const questions = await findQuestionsAtFirestore();
+  const questions = await (
+    await findQuestionsAtFirestore()
+  ).sort((a, b) => Number(b.created) - Number(a.created));
 
   return {
     props: {
